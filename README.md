@@ -1,7 +1,3 @@
-# Ruby on Rails Tutorial
+# Ruby on Rails チュートリアルのサンプルアプリケーション
 
-## "hello, world!"
-
-This is the first application for the
-[*Ruby on Rails Tutorial*](https://railstutorial.jp)
-by [Michael Hartl](https://www.michaelhartl.com/). Hello, world!
+これは、次の教材で作られたサンプルアプリケーションです。
