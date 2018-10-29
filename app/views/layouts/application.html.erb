@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
+    <!-- <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title> -->
+    <title><%= full_title(yield(:title)) %></title>
     <!-- csrf_meta_tagsは、Web攻撃手法の１つであるクロスサイトリクエストフォージェリー (Cross-Site Request Forgery: CSRF)を防ぐために使われるRailsのメソッドです。 -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <!-- Railsの組み込み関数 stylesheet_link_tag を使って、application.css すべてのメディアタイプを使えるようにしている。 -->
     <!-- 4つの落とし穴(組み込み関数、カッコを利用しない、シンボル、そしてハッシュ) -->
+    <!-- 引数の最後がハッシュの場合は波括弧は省略できる -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
