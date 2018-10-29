@@ -6,6 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Railsの組み込み関数 stylesheet_link_tag を使って、application.css すべてのメディアタイプを使えるようにしている。 -->
+    <!-- 4つの落とし穴(組み込み関数、カッコを利用しない、シンボル、そしてハッシュ) -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
