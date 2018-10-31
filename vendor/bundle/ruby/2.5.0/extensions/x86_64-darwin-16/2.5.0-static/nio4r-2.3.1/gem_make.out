@@ -1,5 +1,5 @@
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/nio4r-2.3.1/ext/nio4r
-/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181023-4836-1g5hzar.rb extconf.rb
+/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181031-10346-7h6xzi.rb extconf.rb
 checking for unistd.h... yes
 checking for sys/select.h... yes
 checking for port_event_t in poll.h... no
@@ -247,4 +247,4 @@ linking shared-object nio4r_ext.bundle
 
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/nio4r-2.3.1/ext/nio4r
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20181023-4836-1ibxqzj
+/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20181031-10346-rqdmtv

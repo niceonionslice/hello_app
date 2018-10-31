@@ -1,5 +1,5 @@
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.5/ext/nokogiri
-/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181023-4836-1fkh8pd.rb extconf.rb --use-system-libraries
+/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181031-10346-1a2cpzz.rb extconf.rb --use-system-libraries
 checking if the C compiler accepts ... yes
 checking if the C compiler accepts -Wno-error=unused-command-line-argument-hard-error-in-future... no
 Building nokogiri using system libraries.
@@ -85,4 +85,4 @@ rm -rf /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/nokogiri
 
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.5/ext/nokogiri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nokogiri.bundle ./.gem.20181023-4836-f5e9pi/nokogiri
+/usr/bin/install -c -m 0755 nokogiri.bundle ./.gem.20181031-10346-ble7n0/nokogiri

@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3
 Primary memory available: 16.00 gigabytes
-Default processor set: 339 tasks, 1662 threads, 4 processors
-Load average: 8.21, Mach factor: 0.44
+Default processor set: 398 tasks, 2179 threads, 4 processors
+Load average: 11.78, Mach factor: 0.39
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -45,6 +45,11 @@ PATH: /Users/gulliver/.anyenv/bin
 PATH: /usr/local/opt/mysql@5.6/bin
 PATH: /usr/local/opt/qt@5.5/bin
 PATH: /usr/local/bin
+PATH: /usr/local/bin
+PATH: /Users/gulliver/.rbenv/shims
+PATH: /Users/gulliver/.anyenv/envs/ndenv/shims
+PATH: /Users/gulliver/.anyenv/envs/ndenv/bin
+PATH: /Users/gulliver/.anyenv/bin
 PATH: /usr/local/bin
 PATH: /Users/gulliver/.rbenv/shims
 PATH: /usr/bin

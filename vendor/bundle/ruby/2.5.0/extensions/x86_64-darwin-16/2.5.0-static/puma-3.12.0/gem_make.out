@@ -1,5 +1,5 @@
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/puma-3.12.0/ext/puma_http11
-/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181023-6475-11fcuz9.rb extconf.rb
+/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181031-10346-cooe1k.rb extconf.rb
 checking for BIO_read() in -lcrypto... yes
 checking for SSL_CTX_new() in -lssl... yes
 checking for openssl/bio.h... yes
@@ -18,4 +18,4 @@ linking shared-object puma/puma_http11.bundle
 
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/puma-3.12.0/ext/puma_http11
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20181023-6475-jhhw6w/puma
+/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20181031-10346-19gly0t/puma

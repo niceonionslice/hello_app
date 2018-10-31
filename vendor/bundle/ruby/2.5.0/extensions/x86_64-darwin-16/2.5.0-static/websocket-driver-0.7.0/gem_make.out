@@ -1,5 +1,5 @@
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.0/ext/websocket-driver
-/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181023-4836-qk1fk9.rb extconf.rb
+/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181031-10346-dgneul.rb extconf.rb
 creating Makefile
 
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.0/ext/websocket-driver
@@ -12,4 +12,4 @@ linking shared-object websocket_mask.bundle
 
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.0/ext/websocket-driver
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20181023-4836-1objauc
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20181031-10346-14ix0qd

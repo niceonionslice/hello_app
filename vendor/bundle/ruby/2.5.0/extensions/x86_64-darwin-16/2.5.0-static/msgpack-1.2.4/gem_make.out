@@ -1,5 +1,5 @@
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/msgpack-1.2.4/ext/msgpack
-/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181023-6475-1rkr5yq.rb extconf.rb
+/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181031-10346-5hpxcf.rb extconf.rb
 checking for ruby/st.h... yes
 checking for st.h... yes
 checking for rb_str_replace() in ruby.h... yes
@@ -36,4 +36,4 @@ linking shared-object msgpack/msgpack.bundle
 
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/msgpack-1.2.4/ext/msgpack
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 msgpack.bundle ./.gem.20181023-6475-1drh0s1/msgpack
+/usr/bin/install -c -m 0755 msgpack.bundle ./.gem.20181031-10346-1l5763e/msgpack

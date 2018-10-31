@@ -1,5 +1,5 @@
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.3.2/ext/bootsnap
-/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181023-6475-1xwf4te.rb extconf.rb
+/Users/gulliver/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181031-10346-4tu4rp.rb extconf.rb
 creating Makefile
 
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.3.2/ext/bootsnap
@@ -12,4 +12,4 @@ linking shared-object bootsnap/bootsnap.bundle
 
 current directory: /Users/gulliver/mygithub/hello_app/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.3.2/ext/bootsnap
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20181023-6475-10aqopw/bootsnap
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20181031-10346-e47lsq/bootsnap
