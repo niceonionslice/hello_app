@@ -15,7 +15,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   # Homeページのテスト。GETリクエストをhomeアクションに対して発行 (=送信) せよ。そうすれば、リクエストに対するレスポンスは[成功]になるはず。
   test "should get home" do
-    get home_url
+    get home_path
     assert_response :success
     assert_select "title", "#{@base_title}"
   end
@@ -24,20 +24,20 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   # GETリクエストをHelpアクションに対して発行（=送信）せよ。
   # そうすれば、リクエストに対するレスポンスは[成功]になるはず。
   test "should get help" do
-    get help_url
+    get help_path
     assert_response :success
     assert_select "title", "Help | #{@base_title}"
   end
 
   # Aboutページのテスト
   test "should get about" do
-    get about_url
+    get about_path
     assert_response :success
     assert_select "title", "About | #{@base_title}"
   end
 
   test "should get contact" do
-    get contact_url
+    get contact_path
     assert_response :success
     assert_select "title", "Contact | #{@base_title}"
   end
