@@ -27,4 +27,24 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation'
     assert_select 'div.field_with_errors'
   end
+
+  test "valid signup information" do
+    get signup_path
+    u = User.count
+    # assert_difference の第二引数は前後の差分の数をチェックしている。
+    # ユーザを新規で登録する。
+    assert_difference 'User.count', 1 do
+      post users_path, params: {
+                          user: {
+                            name: "wataru koganei",
+                            email: "user@valid.com",
+                            password: "wataru",
+                            password_confirmation: "wataru"
+                          }}
+    end
+    follow_redirect!
+    assert_template 'users/show'
+    assert_select 'div.alert.alert-success'
+    assert_not flash.nil?
+  end
 end
