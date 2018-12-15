@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   # root 'application#hello'
   root 'static_pages#home'
   post '/signup', to: 'users#create'
+  #  リソースを追加して標準的なRESTfulアクションをgetできるようにする
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destory'
   resources :users
 end
