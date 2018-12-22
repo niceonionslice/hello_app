@@ -18,5 +18,14 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     get root_path
     assert flash.empty?
+
+    get login_path
+    assert_template 'sessions/new'
+    assert flash.empty?
+    post login_path, params: { session: { email: "", password: "" }}
+    assert_template 'sessions/new'
+    assert_not flash.empty?
+    get root_path
+    assert flash.empty?
   end
 end

@@ -7,6 +7,6 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
               format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i},
               uniqueness: { case_sensitive: false } # 大文字と小文字を区別しない
-  has_secure_password
+  has_secure_password # <- が authenticateメソッドを提供している。
   validates :password, presence: true, length: { minimum: 6 }
 end

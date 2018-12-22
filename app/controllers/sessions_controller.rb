@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     #   password:
     #   email:
     user = User.find_by(email: params[:session][:email].downcase)
+    # user.rbで定義されているhas_secure_passwordがauthenticateメソッドを定義している。
     if user && user.authenticate(params[:session][:password])
       # ユーザーログイン後にユーザー情報のページにリダイレクトする。
       redirect_to user
