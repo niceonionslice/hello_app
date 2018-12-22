@@ -10,7 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// bootstrap.jsを利用するには require bootstrapを宣言しないとダメだよね。
 //= require rails-ujs
+//= require jquery
+//= require bootstrap
 //= require activestorage
 //= require turbolinks
 //= require_tree .
