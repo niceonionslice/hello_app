@@ -4,6 +4,12 @@ class UserLoginTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
+
+  def setup
+    @user = users(:ai_sakura)
+  end
+
+
   test "login with invalid infomation" do
     # 1. ログインパスを開く
     # 2. 新しいセッションのフォームが正しく表示されていることを確認
@@ -28,4 +34,21 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     get root_path
     assert flash.empty?
   end
+
+  # 1. ログイン用のパスを開く
+  # 2. セッション用パスに有効な情報をpostする
+  # 3. ログイン用リンクが表示されなくなったことを確認する
+  # 4. ログアウト用リンクが表示されていることを確認する
+  # 5. プロフィール用リンクが表示されていることを確認する
+  test "login with valid infomation" do
+    get login_path
+    post login_path, params: { session: { email: @user.email, password: 'password' }}
+    assert_redirected_to @user # リダイレクト先を検証
+    follow_redirect! # リダイレクト
+    assert_template 'users/show'
+    assert_select "a[href=?]", login_path, count: 0
+    assert_select "a[href=?]", logout_path
+    assert_select "a[href=?]", user_path(@user)
+  end
+
 end

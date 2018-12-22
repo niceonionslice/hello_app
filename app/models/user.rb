@@ -9,4 +9,12 @@ class User < ApplicationRecord
               uniqueness: { case_sensitive: false } # 大文字と小文字を区別しない
   has_secure_password # <- が authenticateメソッドを提供している。
   validates :password, presence: true, length: { minimum: 6 }
+
+
+  def self.digest(str)
+    cost =
+      ActiveModel::SecurePassword.min_cost ?
+        BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(str, cost: cost)
+  end
 end
