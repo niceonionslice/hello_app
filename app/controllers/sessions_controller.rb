@@ -16,9 +16,11 @@ class SessionsController < ApplicationController
       # エラーメッセージを追加する
       # このフラッシュメッセージは一度表示されると消えずに残ってしまう。
       # リダイレクトを利用した時とはことなり、表示したテンプレートをrenderメソッドで強制的に再レンダリングしても
-      # リクエストと見なされないため（なぜ、見なされないのか？）、メッセージは消えない。
+      # リクエストと見なされないため、メッセージは消えない。
       # flash.nowはそのリクエスト内でしか情報を保持しない（その場でエラーを返して終わりたい場合はこちら）
       # flashは次のリクエストまで情報を保持する。（次の画面に情報を保持したい場合に有効）
+      # ridirect --------> request -----> respons 再レンダリングが発生する。
+      # flash -------> respons リクエストとみなされないため 再レンダリングが発生しない。
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
