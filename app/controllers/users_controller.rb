@@ -10,7 +10,12 @@ class UsersController < ApplicationController
 
   def show
     # このparams[:id]はroutesのurlのuser/:idから取得している。
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      flash[:warning] = 'アカウントをお持ちの方はログインして下さい。お持ちでない方は新規アカウント登録をお願いします。'
+      redirect_to root_url
+    end
     # debugger
   end
 

@@ -19,4 +19,10 @@ module SessionsHelper
     # !をつけることでturu / falseが逆になります。
     !current_user.nil?
   end
+
+  def log_out
+    session.delete :user_id
+    @current_user = nil
+    redirect_to root_url
+  end
 end

@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
   end
 
   def destory
-    #code
+    log_out
   end
 end
