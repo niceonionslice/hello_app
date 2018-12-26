@@ -7,7 +7,6 @@
 # two:
 #   name: MyString
 #   email: MyString
-
 ai_sakura:
   name: Ai Sakura
   email: ai.sakura@gmail.com
@@ -17,3 +16,20 @@ mm_buranca:
   name: Momo Buranca
   email: mm.buranca@gmail.com
   password_digest: <%= User.digest('password') %>
+
+lana:
+  name: Lana Kane
+  email: hands@gmail.com
+  password_digest: <%= User.digest('password') %>
+
+malory:
+  name: Malory Archer
+  email: boss@gmail.com
+  password_digest: <%= User.digest('password') %>
+
+<% (1..30).each do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
