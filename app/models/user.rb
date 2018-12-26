@@ -10,7 +10,8 @@ class User < ApplicationRecord
               format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i},
               uniqueness: { case_sensitive: false } # 大文字と小文字を区別しない
   has_secure_password # <- が authenticateメソッドを提供している。
-  validates :password, presence: true, length: { minimum: 6 }
+  # パスワードは必須。文字列は最低6文字、空白OK
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # 永続セッションのためにユーザをデータベースに記録する。
   def remember

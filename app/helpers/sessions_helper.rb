@@ -39,18 +39,46 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
 
+
+  # 渡されたユーザーがログイン済みユーザーであればtrueを返す
+  def current_user?(user)
+    user == current_user
+  end
+
   # ユーザが存在していない場合nilが返却される。このメソッドではログインしているかを問い合わせているのでログインしていない場合はfalseを返却しなければならない。
-  # !をつけることでturu / falseが逆になります。
+  # !をつけることでtrue / falseが逆になります。
   def logged_in?
     !current_user.nil?
   end
-
 
   # 現在のユーザをログアウトする
   def log_out
     forget current_user
     session.delete :user_id
     @current_user = nil
+  end
+
+
+  # フレンドリーフォワーディングを実装
+
+  # 記憶したURL（もしくはデフォルト値）にリダイレクト
+  def redirect_back_to(defalut)
+    redirect_to(session[:forwarding_url] || defalut)
+    # 転送用のURLを削除する。
+    # この処理を、実施しておくことで次回ログインした時に保護されたページに転送されてしまい、
+    # ブラウザを閉じるまで処理がくりかえされてしまう。
+    session.delete(:forwarding_url)
+  end
+
+  # アクセスしてきたURLを覚えておく
+  # getの時だけ保存するようにします。
+  # 例えばログインしていないユーザがフォームを作って送信（不正）した場合、
+  # 転送先のURLを保存させないようにできる。
+  def store_location
+    # リクエストがgetの場合
+    # リクエスト先のURLを取得してsessionに登録しておく。
+    # request.original_urlでリクエスト先が取得できます。
+    session[:forwarding_url] = request.original_url if request.get?
   end
 
   private

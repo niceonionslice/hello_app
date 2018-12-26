@@ -4,6 +4,7 @@
 $light-gray: #777;
 $white: #fff;
 $gray-medium-light: #eaeaea;
+$gray-lighter: #eaeafa;
 
 aside {
   // sectionタグのuser_infoというクラスを指定
@@ -190,5 +191,17 @@ footer {
       float: left;
       margin-left: 15px;
     }
+  }
+}
+
+// Users index
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter
   }
 }

@@ -12,3 +12,8 @@ ai_sakura:
   name: Ai Sakura
   email: ai.sakura@gmail.com
   password_digest: <%= User.digest('password') %>
+
+mm_buranca:
+  name: Momo Buranca
+  email: mm.buranca@gmail.com
+  password_digest: <%= User.digest('password') %>
