@@ -81,6 +81,10 @@ module SessionsHelper
     session[:forwarding_url] = request.original_url if request.get?
   end
 
+  def current_user_is_admin_and_current_user?(user)
+    current_user.admin? && !current_user?(user)
+  end
+
   private
 
   # 永続的セッションを破棄する

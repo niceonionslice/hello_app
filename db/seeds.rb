@@ -6,12 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# ユーザー情報を追加します。
-User.create!(name: "Uma Taro", email: 'example@railstutorial.org', password: 'foobar', password_confirmation: 'foobar')
 
-99.times do |n|
+pw = 'password'
+
+# ユーザー情報を追加します。
+User.create!( name: "Ichi Taro",
+              email: 'ichi_taro@example.org',
+              password: pw,
+              password_confirmation: pw,
+              admin: true
+            )
+
+User.create!( name: "Ni Taro",
+              email: 'ni_taro@example.org',
+              password: pw,
+              password_confirmation: pw)
+
+User.create!( name: "San Taro",
+              email: 'san_taro@example.org',
+              password: pw,
+              password_confirmation: pw)
+
+(4..100).each do |n|
   name = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = 'password'
-  User.create!(name: name, email: email, password: password, password_confirmation: password)
+  email = "example-#{n+1}@example.org"
+  User.create!(name: name, email: email, password: pw, password_confirmation: pw)
 end
