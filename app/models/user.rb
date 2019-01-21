@@ -1,9 +1,12 @@
 class User < ApplicationRecord
   has_many :microposts
   # データベースにはないがUserクラスには定義された属性
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
-  before_save { self.email = email.downcase }
+  # このような定義もできる。
+  # before_save { self.email = email.downcase }
+  before_save :downcase_email
+  before_create :create_activation_digest
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -12,6 +15,10 @@ class User < ApplicationRecord
   has_secure_password # <- が authenticateメソッドを提供している。
   # パスワードは必須。文字列は最低6文字、空白OK
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  def downcase_email
+    self.email.downcase!
+  end
 
   # 永続セッションのためにユーザをデータベースに記録する。
   def remember
@@ -44,5 +51,13 @@ class User < ApplicationRecord
     def new_token
       SecureRandom.urlsafe_base64
     end
+  end
+
+  private
+
+  def create_activation_digest
+    # このメソッドのコールバックの目的は、トークンとそれに対応するダイジェストを割り当てるため。
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 end

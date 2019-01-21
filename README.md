@@ -43,3 +43,6 @@ Usersリソース用のRESTfulのうち、これmで未実装だったedit, upda
  ctl+D カーソル右側の文字を削除
  ctl+H カーソル左側の文字を削除
  ctl+shift+K 行削除
+
+
+11.2から

@@ -14,21 +14,30 @@ User.create!( name: "Ichi Taro",
               email: 'ichi_taro@example.org',
               password: pw,
               password_confirmation: pw,
-              admin: true
+              admin: true,
+              activated: true,
+              activated_at: Time.zone.now
             )
 
 User.create!( name: "Ni Taro",
               email: 'ni_taro@example.org',
               password: pw,
-              password_confirmation: pw)
-
+              password_confirmation: pw,
+              activated: true,
+              activated_at: Time.zone.now
+            )
 User.create!( name: "San Taro",
               email: 'san_taro@example.org',
               password: pw,
-              password_confirmation: pw)
+              password_confirmation: pw,
+              activated: true,
+              activated_at: Time.zone.now
+            )
 
 (4..100).each do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@example.org"
-  User.create!(name: name, email: email, password: pw, password_confirmation: pw)
+  User.create!(name: name, email: email, password: pw, password_confirmation: pw,
+  activated: true,
+  activated_at: Time.zone.now)
 end
