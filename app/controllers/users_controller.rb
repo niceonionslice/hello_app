@@ -6,7 +6,9 @@ class UsersController < ApplicationController
 
   def index
     # @users = User.all
-    @users = User.paginate(page: params[:page])
+    # @users = User.paginate(page: params[:page])
+    # 有効なユーザーのみを表示するように変更しましょう。
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   def new
@@ -28,11 +30,10 @@ class UsersController < ApplicationController
     # createは、ユーザー登録時に呼ばれる
     @user = User.new(user_params) # 実装は終わっていないことに注意！
     if @user.save
-      log_in @user
-      flash[:success] = 'Welcome to the Sample App!'
-      # 以下のコードは redirect_to user_url(user) 等価
-      #  Railsがよしなにコードを理解してくれている。
-      redirect_to @user
+      @user.send_activation_email
+      # UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       render 'new'
     end

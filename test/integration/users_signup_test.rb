@@ -4,6 +4,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
+
+  def setup
+    ActionMailer::Base.deliveries.clear
+  end
+
   test "invalid signup information" do
     # get メソッドを使ってユーザー登録ページにアクセスします。
     get signup_path
@@ -28,24 +33,65 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'div.field_with_errors'
   end
 
-  test "valid signup information" do
+  # test "valid signup information" do
+  #   get signup_path
+  #   u = User.count
+  #   # assert_difference の第二引数は前後の差分の数をチェックしている。
+  #   # ユーザを新規で登録する。
+  #   assert_difference 'User.count', 1 do
+  #     post users_path, params: {
+  #                         user: {
+  #                           name: "wataru koganei",
+  #                           email: "user@valid.com",
+  #                           password: "wataru",
+  #                           password_confirmation: "wataru"
+  #                         }}
+  #   end
+  #   follow_redirect!
+  #   # assert_template 'users/show'
+  #   # assert_select 'div.alert.alert-success'
+  #   # assert_not flash.nil?
+  #   # assert is_logged_in?
+  # end
+
+  # 有効化のテストとリファクタリングした結果
+  test "valid signup information with account activation" do
     get signup_path
-    u = User.count
-    # assert_difference の第二引数は前後の差分の数をチェックしている。
-    # ユーザを新規で登録する。
     assert_difference 'User.count', 1 do
-      post users_path, params: {
-                          user: {
-                            name: "wataru koganei",
-                            email: "user@valid.com",
-                            password: "wataru",
-                            password_confirmation: "wataru"
-                          }}
+      post users_path, params: { user: { name: "Example User",
+                                  email: "user@example.com",
+                                  password: "password",
+                                  password_confirmation: "password"
+                                }}
     end
+    # 配信されたメッセージがきっかり１つであるかどうかを確認（deliveriesは変数なのでsetupで初期化しておかないと並行して行われる他のテストでメールが配信された時にエラーになってしまいます。）
+    assert_equal 1, ActionMailer::Base.deliveries.size
+
+    # ちょっとわかりづらいけどassignsを利用することでアクション内のインスタンスにアクセスすることができる。
+    # ちょっとした錬金術に見えなくもないしスコープもわかりづらい。。
+    # 実際に利用してみてuserに返信されたオブジェクトを自分で確認してみたほうがいい。
+    user = assigns(:user)
+    # puts user.email # userオブジェクトが何者なのかを確認してみる。
+    assert_not user.activated?
+    # 有効化していない状態でログインしてみる
+    log_in_as(user)
+    assert_not is_logged_in?
+    # 有効化トークンが不正な場合
+    get edit_account_activation_path("invalid token", email: user.email)
+    assert_not is_logged_in?
+    # トークンは正しいがメールアドレスが無効な場合
+    get edit_account_activation_path(user.activation_token, email: 'wrong')
+    assert_not is_logged_in?
+    # 有効化トークンが正しい場合
+    get edit_account_activation_path(user.activation_token, email: user.email)
+    assert user.reload.activated?
+
     follow_redirect!
     assert_template 'users/show'
+    assert is_logged_in?
     assert_select 'div.alert.alert-success'
     assert_not flash.nil?
     assert is_logged_in?
   end
+
 end
