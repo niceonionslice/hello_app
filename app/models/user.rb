@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :microposts
+  # dependentを定義することでユーザーと一緒に削除されることを保証する。
+  has_many :microposts, dependent: :destroy
   # データベースにはないがUserクラスには定義された属性
   attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -81,6 +82,10 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   private

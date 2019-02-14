@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     # このparams[:id]はroutesのurlのuser/:idから取得している。
     if logged_in?
       @user = User.find(params[:id])
+      @microposts = @user.microposts.paginate(page: params[:page])
     else
       flash[:warning] = 'アカウントをお持ちの方はログインして下さい。お持ちでない方は新規アカウント登録をお願いします。'
       redirect_to root_url
@@ -67,13 +68,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def logged_in_user
-    unless logged_in?
-      store_location #
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
+  # def logged_in_user
+  #   unless logged_in?
+  #     store_location #
+  #     flash[:danger] = "Please log in."
+  #     redirect_to login_url
+  #   end
+  # end
 
   # 正しいユーザーかどうか確認
   def correct_user
